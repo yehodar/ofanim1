@@ -1,0 +1,304 @@
+﻿<!doctype html>
+<html lang="">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    
+    <!-- CSS -->
+    <!--<link href="styles/reset.css" rel="stylesheet" />-->
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <link href="styles/myStyle.css" rel="stylesheet" />
+
+
+   
+
+    <!-- Scripts -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9yeaCxRGyOhRI6hk_YIT77OjFAVC0ORc&sensor=TRUE&language=he"></script>
+
+    <script src="jScripts/jquery-1.12.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="jScripts/JavaScript.js"></script>
+
+</head>
+<body style="text-shadow:none !important;">
+    <div data-role="page" id="LoginPage">
+
+        <div data-role="header"></div>
+        <div data-role="content" id="LoginPageContent">
+            <h1>ברוכים הבאים לחידון אופנים!</h1>
+
+
+            <form id="loginForm">
+                <h2>התחברות</h2>
+                <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+                    <legend></legend>
+
+                    <input type="radio" name="userTypeChoice" id="userTypeStudent" value="1" checked="checked"><label for="userTypeStudent">חניך/ה</label>
+                    <input type="radio" name="userTypeChoice" id="userTypeGuide" value="2"><label for="userTypeGuide">צוות</label>
+
+                </fieldset>
+                <label for="userNamrTXT">שם משתמש:</label><input type="text" name="userNamrTXT" id="userNamrTXT" value="">
+                <label for="userPasswordTXT">סיסמא:</label><input type="password" name="userPasswordTXT" id="userPasswordTXT" value="" autocomplete="off">
+                <p id="loginFormFeedback"></p>
+
+
+            </form>
+            <a href="#" id="loginSubmitA" onclick="systemLogin()">התחברות</a>
+            <!--<input type="submit" id="loginSubmitA" value="התחברות" onclick="systemLogin()"-->
+        </div>
+        <!--div data-role="footer" id="">
+            <h3>הפקולטה לטכנולוגיות למידה, כל הזכויות שמורות</h3>
+        </div>-->
+
+    </div>
+    <!--דף הבית-->
+    <div data-role="page" id="homePage">
+
+        <div data-role="header" class="newHeaderDiv">
+
+            <img src="img/ofanim-logo.png" />
+            <!--<a href="#infoPopUp" id="infoBTN" class="ui-btn ui-icon-info ui-btn-icon-notext ui-corner-all" data-rel="popup" data-position-to="window">אודות</a>-->
+
+
+        </div>
+        <div data-role="content" id="homePageContentDiv">
+            <h1>חידון אופנים</h1>
+            <h2 id="userGreetingP">שלום</h2>
+            <div id="newQuestionDiv">
+                <img src="img/robot.png" />
+                <img src="img/Icons/newQuestion_icon_64.png" id="homePage_NewQuestionIcon" />
+                <h3 id="thisWeekQuestionH3">הגיעה חידה חדשה!</h3>
+                <a id="newQuestionA" href="#firstPage">נתחיל</a>
+            </div>
+
+            <div class="buttonTypeB_Div" id="previousQuestionsDiv" onclick="goLoadPreviousQuestions()">
+                <div class="buttonTypeB_DivIcon"><img src="img/Icons/previousQuestions_Icon_64.png" /></div>
+                <h4>חידות קודמות</h4>
+            </div>
+            <div class="buttonTypeB_Div" id="myProfileDiv" onclick="goLoadMyProfile()">
+                <div class="buttonTypeB_DivIcon"><img src="img/Icons/myProfile_Icon_64.png" /></div>
+                <h4>הפרופיל שלי</h4>
+            </div>
+            <div class="buttonTypeC_Div" id="helpInfoDiv" onclick="getMyQuestions()">
+                <div class="buttonTypeC_DivIcon"><img src="img/Icons/info_Icon_64.png" /></div>
+                <h4>אודות ועזרה</h4>
+            </div>
+
+
+
+            <br />
+            <!--<a href="#firstPage">חידה</a>-->
+        </div>
+        <!--<div data-role="footer" class="newFooterDiv">
+            <h3>הפקולטה לטכנולוגיות למידה, כל הזכויות שמורות</h3>
+        </div>-->
+
+    </div>
+
+    <!--סוף דף הבית-->
+    <!--דף חידת השבוע-->
+    <div data-role="page" id="firstPage">
+        <!--<div data-role="header" class="headerDiv">
+
+
+            <div id="hidden-wrapper">
+                <h1>חידון אופנים</h1>
+
+                <input class="ui-btn-inline startBtn1" id="startBtn" type="button" value="שנתחיל?" onclick="findQuestion()" data-inline="true" data-theme="a" data-icon="carat-d" />
+                <a href="#infoPopUp" id="infoBTN" class="ui-btn ui-icon-info ui-btn-icon-notext ui-corner-all" data-rel="popup" data-position-to="window">אודות</a>
+                <img src="img/ofanim-logo.png" />
+            </div>
+
+
+        </div>-->
+        <div data-role="content" id="contentDiv">
+
+            <div class="questionDiv" id="mainQuestionDiv">
+                <div id="mainQuestionStemDiv">
+                    <!--<img src="img/Icons/myProfile_Icon_32.png" id="whiteCrownIcon" />-->
+                    <h1 style="color:white; font-size:17px; font-weight:bold; text-align:right;     margin: 3px 0px;">חידת השבוע: <span id="q1Name"></span></h1>
+                    <!--<h2 class="qNameH1" id="q1Name">שם השאלה</h2>-->
+
+                    <p class="qStemP" id="q1Stem">מלל השאלה</p>
+                    <p id="qInstruction">בחרו בתשובה הנכונה.</p>
+                    <div id="qGiftButton" onclick="clickGiftPopUp('open');"><img src="img/GiftIcon.png" /></div>
+                </div>
+
+
+                <form id="myform">
+                    <fieldset data-role="controlgroup" data-iconpos="right" id="questionFieldset"></fieldset>
+
+                    <input type="button" id="checkAnswerBTN" data-inline="true" value="החלטתי" onclick="checkAnswer()">
+
+                </form>
+            </div>
+            <div id="feedbackDiv">
+                <div id="feedbackDivFirstPart">
+                    <img id="feedbackImg" src="img/robot.png" />
+                    <p id="feedbackP"></p>
+                </div>
+
+
+
+            </div>
+            <a href="#homePage" style="margin-right:10px; margin-top:0px;" class="goHomeBTN">חזרה לדף הבית</a>
+        </div>
+        <!--<div data-role="footer" id="myFooter">
+            <h3>הפקולטה לטכנולוגיות למידה, כל הזכויות שמורות</h3>
+        </div>-->
+        <!--דיב של אודות-->
+        <div data-role="popup" id="infoPopUp" data-overlay-theme="b" data-theme="a" data-tolerance="15,15" class="ui-content">
+            <!--<iframe src="http://player.vimeo.com/video/41135183?portrait=0" width="497" height="298" seamless=""></iframe>-->
+            <h2>חידון אופנים</h2>
+            <p>
+                פורטל חידות אופנים פותח במסגרת פרויקט גמר<br />
+                בתואר טכנולוגיות למידה<br />
+                עבור עמותת אופנים
+                <br /><br />
+                פרויקט גמר תשע"ט<br />
+                <a href="https://www.hit.ac.il/telem/overview" target="_blank">הפקולטה לטכנולוגיות למידה</a>
+            </p>
+            <div class="ui-grid-a">
+                <div class="ui-block-a" style="width:70%;">
+                    <div class="ui-bar" style="height:170px">
+                        <p style="font-weight:normal;"><b>צוות הפרויקט</b><br />אירה גליאפינה ויהודר שוץ<br /><b>מנחות הפרויקט</b><br />פרופסור מיקי רונן <br />רותם ישראל-פישלזון</p>
+
+                        <p>עבור <a href="http://ofanim.org.il/" target="_blank">עמותת אופנים</a></p>
+                    </div>
+                </div>
+                <div class="ui-block-b" style="width:29%;">
+                    <div class="ui-bar" style="height:170px">
+                        <img src="img/hitLogo.png" style="width:50px; display:block; margin-top:10px;" />
+                        <img src="img/ofanim-logo.png" style="margin-top:72px; width: 50px;" />
+                    </div>
+                </div>
+            </div>
+            <p>משרדי העמותה</p>
+            <div id="myGoogleMap"></div>
+
+        </div>
+
+        <!--דיב הצגת תמונה-->
+        <div id="GiftPopup" onclick="clickGiftPopUp('close');">
+
+
+            <img src="" id="qPic" />
+            <iframe id="GiftPopupVideoIframe" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe id="GiftPopupWebLinkIframe" src=""></iframe>
+        </div>
+    </div>
+
+    <!--דף הפרופיל שלי-->
+
+
+    <div data-role="page" id="myprofilePage">
+        <div data-role="header" class="newHeaderDiv"></div>
+        <div data-role="content" id="myprofileContent">
+            <h1>הפרופיל שלי</h1>
+            <div id="currentDoneDiv">
+                <!--<img src="img/Icons/myProfile_Icon_64.png" />-->
+                <p id="currentDoneP">השתתפת ב-6 חידות!</p>
+            </div>
+
+
+
+            <div class="achievementDiv" id="achievementDiv_answerd">
+                <div class="achievementDiv_p1">
+                    <h2>על כמה חידות עניתי בסך הכול</h2>
+                    <img src="img/Icons/newQuestion_icon_64.png" alt="אייקון של חידות" />
+                </div>
+                <div class="achievementDiv_p2">
+                    <div class="achievementIndexDiv achievement_isAnswer indexDivOff">1</div>
+                    <div class="achievementIndexDiv achievement_isAnswer indexDivOff">5</div>
+                    <div class="achievementIndexDiv achievement_isAnswer indexDivOff">10</div>
+                    <div class="achievementIndexDiv achievement_isAnswer indexDivOff">15</div>
+                    <div class="achievementIndexDiv achievement_isAnswer indexDivOff">20</div>
+                    <div class="achievementIndexDiv achievement_isAnswer indexDivOff">25</div>
+                    <div class="achievementIndexDiv achievement_isAnswer indexDivOff">30</div>
+                </div>
+            </div>
+            <div class="achievementDiv" id="achievementDiv_true">
+                <div class="achievementDiv_p1">
+                    <h2>על כמה חידות עניתי נכון</h2>
+                    <img src="img/Icons/myProfile_Icon_64.png" alt="אייקון של חידות" />
+                </div>
+                <div class="achievementDiv_p2">
+                    <div class="achievementIndexDiv achievement_isTrue indexDivOff">1</div>
+                    <div class="achievementIndexDiv achievement_isTrue indexDivOff">3</div>
+                    <div class="achievementIndexDiv achievement_isTrue indexDivOff">8</div>
+                    <div class="achievementIndexDiv achievement_isTrue indexDivOff">13</div>
+                    <div class="achievementIndexDiv achievement_isTrue indexDivOff">18</div>
+                    <div class="achievementIndexDiv achievement_isTrue indexDivOff">22</div>
+                    <div class="achievementIndexDiv achievement_isTrue indexDivOff">28</div>
+
+                </div>
+            </div>
+
+            <a href="#homePage" class="goHomeBTN">חזרה לדף הבית</a>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    <!--דף חידות עבר -->
+
+
+    <div data-role="page" id="previousQuestionsPage">
+        <div data-role="header" class="newHeaderDiv"></div>
+        <div data-role="content" id="previousQuestionsPage_Content">
+            <h1>חידות קודמות</h1>
+            
+            <div id="previousQuestionsContainer">
+                <div class="previousQuestionDiv" id="pq1" onclick="pq_showQuestion(1)">
+                    <h2 class="previousQuestionH2">שיקויים</h2><img src="img/Icons/myProfile_Icon_32.png" class="previousQuestionIcon"/>
+                </div>
+            </div>
+
+            
+            
+
+            <a href="#homePage" class="goHomeBTN">חזרה לדף הבית</a>
+            
+            <!--חלון צף להצגת פרטי חידה-->
+
+            <div class="questionDiv" id="pq_MainQuestionDiv">
+                <div id="pq_mainQuestionStemDiv">
+
+                    <h1 style="color:white; font-size:17px; font-weight:bold; text-align:right;     margin: 3px 0px;">שם החידה: <span id="pq_q1Name"></span></h1>
+
+
+                    <p class="pq_qStemP" id="pq_qStemP">מלל השאלה</p>
+                    <p id="qInstruction">בחרו בתשובה הנכונה.</p>
+                    <div id="qGiftButton" onclick="clickGiftPopUp('open');"><img src="img/GiftIcon.png" /></div>
+                </div>
+
+
+                <form id="pq_myform">
+                    <fieldset data-role="controlgroup" data-iconpos="right" id="pq_questionFieldset"></fieldset>
+
+
+
+                </form>
+                <a href="#" class="goHomeBTN" id="pq_showAnsA" style="margin-right:10px;" onclick="pq_checkAnswer()">הראה תשובה</a>
+                <a href="#" class="goHomeBTN" onclick="pq_close()" style="float:left; margin-left:10px;">חזרה</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
